@@ -2,15 +2,15 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
-    color: #333;
+    background-color: #e5e3f9;
+    color: #AB81D6;
 }
 
 header {
     text-align: center;
     padding: 20px;
-    background-color: #D3D3FF;
-    color: #fff;
+    background-color: #cbc9ff;
+    color: #AB81D6;
 }
 
 .profile-pic {
@@ -20,7 +20,7 @@ header {
 }
 
 nav {
-    background-color: #fff;
+    background-color: #cbc9ff;
     padding: 10px 0;
 }
 
@@ -36,16 +36,16 @@ nav ul li {
     margin: 0 15px;
 }
 
-nav ul li a {
-    color: #fff;
-    text-decoration: none;
-    font-weight: bold;
-}
+    nav ul li a {
+        color: #AB81D6;
+        text-decoration: none;
+        font-weight: bold;
+    }
 
 section {
     max-width: 800px;
     margin: 20px auto;
-    background: #fff;
+    background: #f2f0f6;
     padding: 20px;
     box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
 }
@@ -63,7 +63,7 @@ section {
 }
 
 h2 {
-    border-bottom: 2px solid #333;
+    border-bottom: 2px solid #AB81D6;
     padding-bottom: 5px;
 }
 
@@ -75,10 +75,9 @@ ul {
     list-style: none;
     padding: 0;
 }
-
-ul li {
-    background: #D3D3FF;
-    margin: 5px 0;
-    padding: 10px;
-    border-radius: 5px;
-}
+    ul li {
+        background: #cbc9ff;
+        margin: 5px 0;
+        padding: 10px;
+        border-radius: 5px;
+    }
