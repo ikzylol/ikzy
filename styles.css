@@ -20,7 +20,7 @@ header {
 }
 
 nav {
-    background-color: #D3D3FF;
+    background-color: #fff;
     padding: 10px 0;
 }
 
@@ -37,7 +37,7 @@ nav ul li {
 }
 
 nav ul li a {
-    color: #fff;
+    color: #D3D3FF;
     text-decoration: none;
     font-weight: bold;
 }
