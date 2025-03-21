@@ -36,11 +36,11 @@ nav ul li {
     margin: 0 15px;
 }
 
-    nav ul li a {
-        color: #AB81D6;
-        text-decoration: none;
-        font-weight: bold;
-    }
+nav ul li a {
+    color: #AB81D6;
+    text-decoration: none;
+    font-weight: bold;
+}
 
 section {
     max-width: 800px;
@@ -75,9 +75,9 @@ ul {
     list-style: none;
     padding: 0;
 }
-    ul li {
-        background: #cbc9ff;
-        margin: 5px 0;
-        padding: 10px;
-        border-radius: 5px;
-    }
+ul li {
+    background: #cbc9ff;
+    margin: 5px 0;
+    padding: 10px;
+    border-radius: 5px;
+}
