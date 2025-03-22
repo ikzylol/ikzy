@@ -140,43 +140,19 @@
             });
         });
         async function fetchOsuRank() {
-            const clientId = "39236"; 
-            const clientSecret = "7Bn4882r6xYSJUXkaYpH7lLBSSNlTWro3Wx7nrd8"
-            const userId = "ikzy"; 
-
             try {
-                // 
-                const tokenResponse = await fetch("https://osu.ppy.sh/oauth/token", {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-                    body: JSON.stringify({
-                        client_id: clientId,
-                        client_secret: clientSecret,
-                        grant_type: "client_credentials",
-                        scope: "public"
-                    })
-                });
+                const response = await fetch("https://your-render-app-url.onrender.com/api/osu-rank");
+                const data = await response.json();
 
-                const tokenData = await tokenResponse.json();
-                const accessToken = tokenData.access_token;
-
-                const userResponse = await fetch(`https://osu.ppy.sh/api/v2/users/${userId}`, {
-                    headers: {
-                        "Authorization": `Bearer ${accessToken}`
-                    }
-                });
-
-                const userData = await userResponse.json();
-                document.getElementById("osu-global-rank").textContent = `Global Ranking Peak: #${userData.statistics.global_rank}`;
-                document.getElementById("osu-country-rank").textContent = `Country Ranking Peak: #${userData.statistics.country_rank}`;
+                document.getElementById("osu-global-rank").textContent = `Global Ranking Peak: #${data.global_rank}`;
+                document.getElementById("osu-country-rank").textContent = `Country Ranking Peak: #${data.country_rank}`;
             } catch (error) {
                 console.error("Error fetching osu! rank:", error);
             }
         }
 
         fetchOsuRank();
+
     </script>
 </body>
 </html>
