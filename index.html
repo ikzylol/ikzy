@@ -75,8 +75,8 @@
             <img src="images/osu!.png" alt="Game Logo" class="game-logo">
             <div>
                 <h3>osu!</h3>
-                <p>Global Ranking Peak: #894,664</p>
-                <p>Country Ranking Peak: #151,626</p>
+                <p id="osu-global-rank">Global Ranking Peak: Loading...</p>
+                <p id="osu-country-rank">Country Ranking Peak: Loading...</p>
             </div>
         </div>
         <!-- Add more ranks as needed -->
@@ -139,6 +139,44 @@
                 document.querySelector(".nav-menu").classList.remove("show");
             });
         });
+        async function fetchOsuRank() {
+            const clientId = "39236"; 
+            const clientSecret = "7Bn4882r6xYSJUXkaYpH7lLBSSNlTWro3Wx7nrd8"
+            const userId = "ikzy"; 
+
+            try {
+                // 
+                const tokenResponse = await fetch("https://osu.ppy.sh/oauth/token", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        client_id: clientId,
+                        client_secret: clientSecret,
+                        grant_type: "client_credentials",
+                        scope: "public"
+                    })
+                });
+
+                const tokenData = await tokenResponse.json();
+                const accessToken = tokenData.access_token;
+
+                const userResponse = await fetch(`https://osu.ppy.sh/api/v2/users/${userId}`, {
+                    headers: {
+                        "Authorization": `Bearer ${accessToken}`
+                    }
+                });
+
+                const userData = await userResponse.json();
+                document.getElementById("osu-global-rank").textContent = `Global Ranking Peak: #${userData.statistics.global_rank}`;
+                document.getElementById("osu-country-rank").textContent = `Country Ranking Peak: #${userData.statistics.country_rank}`;
+            } catch (error) {
+                console.error("Error fetching osu! rank:", error);
+            }
+        }
+
+        fetchOsuRank();
     </script>
 </body>
 </html>
