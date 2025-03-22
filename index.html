@@ -68,7 +68,11 @@
             <img src="images/valorant.png" alt="Game Logo" class="game-logo">
             <div>
                 <h3>Valorant</h3>
-                <p>Peak: Diamond 3</p>
+                <p id="valorant-current-rank">Current Rank: Loading...</p>
+                <p id="valorant-peak-rank">Peak Rank: Loading...</p>
+                <p id="valorant-kd-ratio">K/D Ratio: Loading...</p>
+                <p id="valorant-win-rate">Win Rate: Loading...</p>
+                <p id="valorant-matches-played">Matches Played: Loading...</p>
             </div>
         </div>
         <div class="rank">
@@ -86,22 +90,37 @@
         <div class="setup-item">
             <img src="images/keyboard.webp" alt="Equipment" class="equipment-img">
             <div>
-                <h3>Keyboard</h3>
-                <p>Details about the equipment.</p>
+                <h3>Ajazz AK680 Max</h3>
+                <ul>
+                    <li>68% Keyboard Layout</li>
+                    <li>Magnetic Rice Switch</li>
+                    <li>Up to 8K Polling Rate</li>
+                    <li>Adjustable Actuation </li>
+                </ul>
             </div>
         </div>
         <div class="setup-item">
             <img src="images/mouse.webp" alt="Equipment" class="equipment-img">
             <div>
-                <h3>Mouse</h3>
-                <p>Details about the equipment.</p>
+                <h3>WLMOUSE Beast X Max</h3>
+                <ul>
+                    <li>42 ±1Grams</li>
+                    <li>OMRON Opticals</li>
+                    <li>Up to 8K Polling Rate</li>
+                    <li>Sensor: PAW 3950 HS</li>
+                </ul>
             </div>
         </div>
         <div class="setup-item">
             <img src="images/mousepad.png" alt="Equipment" class="equipment-img">
             <div>
-                <h3>Mousepad</h3>
-                <p>Details about the equipment.</p>
+                <h3>Artisan Ninja FX Zero XSOFT (Black/XL)</h3>
+                <ul>
+                    <li>Light and smooth gliding</li>
+                    <li>Ease of stopping</li>
+                    <li>Excellent ease of handling</li>
+                    <li>XL Size: 49 x 42 x 0.4 cm</li>
+                </ul>
             </div>
         </div>
         <!-- Add more setup items as needed -->
@@ -110,19 +129,15 @@
         <h2>Settings</h2>
         <h3>Valorant Mouse Settings</h3>
         <ul>
-            <li>DPI: 800dpi</li>
-            <li>Sensitivity: 0.35</li>
+            <li>Sensitivity: <b>0.35</b></li>
+            <li>DPI: <b>800dpi</b></li>
+            <li>Crosshair Code: <b>0;s;1;P;o;0.873;d;1;0b;0;1b;0</b></li>
             <!-- Add more settings as needed -->
         </ul>
         <h3>osu! Mouse Settings</h3>
         <ul>
-            <li>DPI: 800dpi</li>
-            <li>Sensitivity: 1.00x</li>
-            <!-- Add more settings as needed -->
-        </ul>
-        <h3>Crosshair Settings</h3>
-        <ul>
-            <li>Crosshair Code: 0;s;1;P;o;0.873;d;1;0b;0;1b;0</li>
+            <li>Sensitivity: <b>1.00x</b></li>
+            <li>DPI: <b>800dpi</b></li>
             <!-- Add more settings as needed -->
         </ul>
         <!-- Add more settings sections as needed -->
@@ -153,6 +168,22 @@
 
         fetchOsuRank();
 
+        async function fetchValorantStats(playerId) {
+            try {
+                const response = await fetch(`https://valorant-backend-cmjz.onrender.com/api/valorant/stats/${playerId}`);
+                const data = await response.json();
+
+                document.getElementById("valorant-current-rank").textContent = `Current Rank: ${data.currentRank}`;
+                document.getElementById("valorant-peak-rank").textContent = `Peak Rank: ${data.peakRank}`;
+                document.getElementById("valorant-kd-ratio").textContent = `K/D Ratio: ${data.kdRatio}`;
+                document.getElementById("valorant-win-rate").textContent = `Win Rate: ${data.winRate}%`;
+                document.getElementById("valorant-matches-played").textContent = `Matches Played: ${data.matchesPlayed}`;
+            } catch (error) {
+                console.error('Error fetching stats:', error);
+            }
+        }
+
+        fetchValorantStats("MEX Ikzy#ONU"); // Replace with the actual player ID
     </script>
 </body>
 </html>
