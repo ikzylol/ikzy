@@ -75,8 +75,8 @@
             <img src="images/osu!.png" alt="Game Logo" class="game-logo">
             <div>
                 <h3>osu!</h3>
-                <p id="osu-global-rank">Global Ranking Peak: Loading...</p>
-                <p id="osu-country-rank">Country Ranking Peak: Loading...</p>
+                <p id="osu-global-rank">Global Ranking: Loading...</p>
+                <p id="osu-country-rank">Country Ranking: Loading...</p>
             </div>
         </div>
         <!-- Add more ranks as needed -->
@@ -144,8 +144,8 @@
                 const response = await fetch("https://osu-backend.onrender.com/api/osu-rank");
                 const data = await response.json();
 
-                document.getElementById("osu-global-rank").textContent = `Global Ranking Peak: #${data.global_rank}`;
-                document.getElementById("osu-country-rank").textContent = `Country Ranking Peak: #${data.country_rank}`;
+                document.getElementById("osu-global-rank").textContent = `Global Ranking: #${data.global_rank}`;
+                document.getElementById("osu-country-rank").textContent = `Country Ranking: #${data.country_rank}`;
             } catch (error) {
                 console.error("Error fetching osu! rank:", error);
             }
