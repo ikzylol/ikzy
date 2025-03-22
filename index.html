@@ -11,16 +11,33 @@
         <img src="images/ikzy.jpg" alt="Profile Picture" class="profile-pic">
         <h1>Ikzy</h1>
         <p>19 &#x1F1F2;&#x1F1FD; | Content Creator and Streamer</p>
+
+        <button class="menu-toggle">&#9776;</button>
+
+        <nav class="nav-menu">
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#teams">Teams</a></li>
+                <li><a href="#ranks">Ranks</a></li>
+                <li><a href="#setup">Gaming Setup</a></li>
+                <li><a href="#settings">Settings</a></li>
+            </ul>
+
+            <!-- Socials Section -->
+            <div class="socials">
+                <h3>Follow Me</h3>
+                <a href="https://x.com/ikzylol" target="_blank">
+                    <img src="images/x.png" alt="X">
+                </a>
+                <a href="https://twitch.tv/ikzylol" target="_blank">
+                    <img src="images/twitch.png" alt="Twitch">
+                </a>
+                <a href="https://www.youtube.com/c/ikzylol" target="_blank">
+                    <img src="images/youtube.png" alt="YouTube">
+                </a>
+            </div>
+        </nav>
     </header>
-    <nav>
-        <ul>
-            <li><a href="#about">About</a></li>
-            <li><a href="#teams">Teams</a></li>
-            <li><a href="#ranks">Ranks</a></li>
-            <li><a href="#setup">Gaming Setup</a></li>
-            <li><a href="#settings">Settings</a></li>
-        </ul>
-    </nav>
     <section id="about">
         <h2>About</h2>
         <p>Brief description about yourself, your gaming journey, and interests.</p>
@@ -54,61 +71,74 @@
                 <p>Peak: Diamond 3</p>
             </div>
         </div>
-            <div class="rank">
-                <img src="images/osu!.png" alt="Game Logo" class="game-logo">
-                <div>
-                    <h3>osu!</h3>
-                    <p>Global Ranking Peak: #894,664</p>
-                    <p>Country Ranking Peak: #151,626</p>
-                </div>
+        <div class="rank">
+            <img src="images/osu!.png" alt="Game Logo" class="game-logo">
+            <div>
+                <h3>osu!</h3>
+                <p>Global Ranking Peak: #894,664</p>
+                <p>Country Ranking Peak: #151,626</p>
             </div>
-            <!-- Add more ranks as needed -->
-        </section>
-        <section id="setup">
-            <h2>Gaming Setup</h2>
-            <div class="setup-item">
-                <img src="images/keyboard.webp" alt="Equipment" class="equipment-img">
-                <div>
-                    <h3>Keyboard</h3>
-                    <p>Details about the equipment.</p>
-                </div>
+        </div>
+        <!-- Add more ranks as needed -->
+    </section>
+    <section id="setup">
+        <h2>Gaming Setup</h2>
+        <div class="setup-item">
+            <img src="images/keyboard.webp" alt="Equipment" class="equipment-img">
+            <div>
+                <h3>Keyboard</h3>
+                <p>Details about the equipment.</p>
             </div>
-            <div class="setup-item">
-                <img src="images/mouse.webp" alt="Equipment" class="equipment-img">
-                <div>
-                    <h3>Mouse</h3>
-                    <p>Details about the equipment.</p>
-                </div>
+        </div>
+        <div class="setup-item">
+            <img src="images/mouse.webp" alt="Equipment" class="equipment-img">
+            <div>
+                <h3>Mouse</h3>
+                <p>Details about the equipment.</p>
             </div>
-            <div class="setup-item">
-                <img src="images/mousepad.png" alt="Equipment" class="equipment-img">
-                <div>
-                    <h3>Mousepad</h3>
-                    <p>Details about the equipment.</p>
-                </div>
+        </div>
+        <div class="setup-item">
+            <img src="images/mousepad.png" alt="Equipment" class="equipment-img">
+            <div>
+                <h3>Mousepad</h3>
+                <p>Details about the equipment.</p>
             </div>
-            <!-- Add more setup items as needed -->
-        </section>
-        <section id="settings">
-            <h2>Settings</h2>
-            <h3>Valorant Mouse Settings</h3>
-            <ul>
-                <li>DPI: 800dpi</li>
-                <li>Sensitivity: 0.35</li>
-                <!-- Add more settings as needed -->
-            </ul>
-            <h3>osu! Mouse Settings</h3>
-            <ul>
-                <li>DPI: 800dpi</li>
-                <li>Sensitivity: 1.00x</li>
-                <!-- Add more settings as needed -->
-            </ul>
-            <h3>Crosshair Settings</h3>
-            <ul>
-                <li>Crosshair Code: 0;s;1;P;o;0.873;d;1;0b;0;1b;0</li>
-                <!-- Add more settings as needed -->
-            </ul>
-            <!-- Add more settings sections as needed -->
-        </section>
+        </div>
+        <!-- Add more setup items as needed -->
+    </section>
+    <section id="settings">
+        <h2>Settings</h2>
+        <h3>Valorant Mouse Settings</h3>
+        <ul>
+            <li>DPI: 800dpi</li>
+            <li>Sensitivity: 0.35</li>
+            <!-- Add more settings as needed -->
+        </ul>
+        <h3>osu! Mouse Settings</h3>
+        <ul>
+            <li>DPI: 800dpi</li>
+            <li>Sensitivity: 1.00x</li>
+            <!-- Add more settings as needed -->
+        </ul>
+        <h3>Crosshair Settings</h3>
+        <ul>
+            <li>Crosshair Code: 0;s;1;P;o;0.873;d;1;0b;0;1b;0</li>
+            <!-- Add more settings as needed -->
+        </ul>
+        <!-- Add more settings sections as needed -->
+    </section>
+
+    <script>
+        document.querySelector(".menu-toggle").addEventListener("click", function () {
+            document.querySelector(".nav-menu").classList.toggle("show");
+        });
+
+        // Close menu when clicking a link
+        document.querySelectorAll(".nav-menu a").forEach(link => {
+            link.addEventListener("click", function () {
+                document.querySelector(".nav-menu").classList.remove("show");
+            });
+        });
+    </script>
 </body>
 </html>
