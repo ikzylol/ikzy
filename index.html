@@ -166,9 +166,13 @@
 
         fetchOsuRank();
 
-        const currentrank = getData();
+        main();
 
-        console.log(currentrank);
+        async function main() {
+            const currentrank = await getData();
+
+            console.log(currentrank);
+        }
 
         async function getData() {
             const res = await fetch("files/StatsVal.json");
