@@ -68,7 +68,8 @@
             <img src="images/valorant.png" alt="Game Logo" class="game-logo">
             <div>
                 <h3>Valorant</h3>
-                <div id="valorant-rank">Loading rank...</div>
+                <p id="valorant-rank">Loading rank...</p>
+                <p id="valorant-peak-rank">Loading peak rank...</p>
             </div>
         </div>
         <div class="rank">
@@ -164,33 +165,24 @@
 
         fetchOsuRank();
 
-        async function fetchValorantRank() {
+        async function fetchRanks() {
             try {
-                const response = await fetch("https://api.tracker.gg/api/v2/valorant/standard/profile/riot/MEX%20Ikzy%23ONU?forceCollect=true"); // Adjust URL if deployed
-                if (!response.ok) throw new Error("Failed to fetch rank");
-
+                const response = await fetch("files/StatsVal.json");
                 const data = await response.json();
-                displayRank(data);
+
+                // Current Rank
+                const currentRank = data.data.rank.metadata.tierName;
+                document.getElementById("valorant-rank").textContent = `Current Rank: ${currentRank}`;
+
+                // Peak Rank and Act Name
+                const peakRank = data.data.peakRank.metadata.tierName;
+                const actName = data.data.peakRank.metadata.actName; // Extracting act name
+                document.getElementById("valorant-peak-rank").textContent = `Peak Rank: ${peakRank} (${actName})`; // Displaying both peak rank and act name
             } catch (error) {
-                console.error("Error:", error);
-                document.getElementById("valorant-rank").innerText = "Error fetching rank";
+                console.error("Error fetching ranks:", error);
             }
         }
-
-        function displayRank(data) {
-            const rankInfo = data.data?.segments?.find(segment => segment.type === "overview");
-
-            if (rankInfo?.stats?.rank) {
-                document.getElementById("valorant-rank").innerHTML = `
-            <p>Rank: ${rankInfo.stats.rank.metadata.tierName}</p>
-            <img src="${rankInfo.stats.rank.metadata.iconUrl}" alt="Rank Icon" width="50">
-        `;
-            } else {
-                document.getElementById("valorant-rank").innerText = "Rank data not available";
-            }
-        }
-
-        fetchValorantRank();
+        fetchRanks();
     </script>
 </body>
 </html>
