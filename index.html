@@ -172,7 +172,7 @@
                 const data = await response.json();
 
                 // Extract Rank Information
-                const rank = data.data.segments[0].stats.rank.tierName;
+                const rank = data.data.segments[0].stats.rank.metadata.tierName;
                 const peakRank = data.data.segments[0].stats.peakRank.displayValue;
 
                 // Insert into HTML
