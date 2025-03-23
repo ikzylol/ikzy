@@ -166,24 +166,11 @@
 
         fetchOsuRank();
 
-        main();
-
-        async function main() {
-            const currentrank = await getData();
-
-            const currentranks = document.querySelector("#valorant-rank");
-
-            for (const rank of currentrank) {
-                currentranks.innerHTML += `Current Rank: ${data.segments[0].stats.rank.metadata.tiername}`
-            }
-        }
-
-        async function getData() {
-            const res = await fetch("files/StatsVal.json");
-            const data = await res.json();
-
-            return data;
-        }
+        fetch('files/StatsVal.json')
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+            });
 
         // fetch("files/StatsVal.json")
            // .then(response => response.json())
