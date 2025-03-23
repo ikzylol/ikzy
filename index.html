@@ -171,18 +171,24 @@
                 const data = await response.json();
 
                 // Current Rank
-                const currentRank = data.data.rank.metadata.tierName;
-                document.getElementById("valorant-rank").textContent = `Current Rank: ${currentRank}`;
+                const currentRank = data.rank.metadata.tierName;
+                const currentRankIconUrl = data.rank.metadata.iconUrl;
+                document.getElementById("valorant-rank").innerHTML = `
+            <img src="${currentRankIconUrl}" alt="${currentRank}" class="rank-icon">
+            Current Rank: ${currentRank}`;
 
                 // Peak Rank and Act Name
-                const peakRank = data.data.peakRank.metadata.tierName;
-                const actName = data.data.peakRank.metadata.actName; // Extracting act name
-                document.getElementById("valorant-peak-rank").textContent = `Peak Rank: ${peakRank} (${actName})`; // Displaying both peak rank and act name
+                const peakRank = data.peakRank.metadata.tierName;
+                const peakRankIconUrl = data.peakRank.metadata.iconUrl;
+                const actName = data.peakRank.metadata.actName; // Extracting act name
+                document.getElementById("valorant-peak-rank").innerHTML = `
+            <img src="${peakRankIconUrl}" alt="${peakRank}" class="rank-icon">
+            Peak Rank: ${peakRank} (${actName})`; // Displaying both peak rank and act name
             } catch (error) {
                 console.error("Error fetching ranks:", error);
             }
         }
-        fetchRanks();
+
     </script>
 </body>
 </html>

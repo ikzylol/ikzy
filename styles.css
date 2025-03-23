@@ -81,12 +81,11 @@ ul li {
     padding: 10px;
     border-radius: 5px;
 }
-.stats-container {
-    margin-top: 20px;
-}
-
-.stat-item {
-    margin-bottom: 10px;
+.rank-icon {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+    vertical-align: middle;
 }
 
 /* Socials Section in Menu */
