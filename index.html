@@ -166,10 +166,12 @@
 
         fetchOsuRank();
 
+        const currentRank = document.getElementById("valorant-rank");
+
         fetch('files/StatsVal.json')
             .then(res => res.json())
             .then(data => {
-                console.log(data);
+                data.segments[0].stats.rank.metadata.tierName
             });
 
         // fetch("files/StatsVal.json")
