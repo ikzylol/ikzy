@@ -158,32 +158,44 @@
 
                 document.getElementById("osu-global-rank").textContent = `Global Ranking: #${data.global_rank}`;
                 document.getElementById("osu-country-rank").textContent = `Country Ranking: #${data.country_rank}`;
-            } catch (error) {
+            }
+            catch (error) {
                 console.error("Error fetching osu! rank:", error);
             }
         }
 
         fetchOsuRank();
 
-        fetch("files/StatsVal.json")
-            .then(response => response.json())
-            .then(data => {
-                // Current Rank
-                const currentRank = data.segments[0].stats.rank.metadata.tierName;
-                const currentIconUrl = data.segments[0].stats.rank.metadata.iconUrl;
+        const currentrank = getData();
 
-                document.getElementById("valorant-rank").innerHTML = `
-                Current Rank: ${currentRank} 
-                <img src="${currentIconUrl}" alt="Rank Icon" class="rank-icon">`;
+        console.log(currentrank);
+
+        async function getData() {
+            const res = await fetch("files/StatsVal.json");
+            const data = await res.json();
+
+            return data;
+        }
+
+        // fetch("files/StatsVal.json")
+           // .then(response => response.json())
+            //.then(data => {
+                // Current Rank
+              //const currentRank = data.segments.stats.rank.metadata.iconUrl;
+                //const currentIconUrl = data.segments.stats.rank.metadata.iconUrl;
+
+                //document.getElementById("valorant-rank").innerHTML = `
+                //Current Rank: ${currentRank} 
+                //<img src="${currentIconUrl}" alt="Rank Icon" class="rank-icon">`;
 
                 // Peak Rank
-                const peakRank = data.segments[0].stats.peakRank.metadata.tierName;
-                const peakIconUrl = data.segments[0].stats.peakRank.metadata.iconUrl;
+                //const peakRank = data.segments[0].stats.peakRank.metadata.tierName;
+                //const peakIconUrl = data.segments[0].stats.peakRank.metadata.iconUrl;
 
-                document.getElementById("valorant-peak-rank").innerHTML = `
-                Peak Rank: ${peakRank} 
-                <img src="${peakIconUrl}" alt="Peak Rank Icon" class="rank-icon">`;
-            })
+                //document.getElementById("valorant-peak-rank").innerHTML = `
+                //Peak Rank: ${peakRank} 
+                //<img src="${peakIconUrl}" alt="Peak Rank Icon" class="rank-icon">`;
+            //})
 
     </script>
 </body>
