@@ -164,31 +164,33 @@
 
         fetchOsuRank();
 
-        window.onload = async () => {
+        async function fetchValorantRank() {
             try {
-                // Make a GET request to your backend API to fetch your stats
-                const response = await fetch(`https://valorant-backend-g2wn.onrender.com/api/valorant-stats`);
-                const data = await response.json();
+                const response = await fetch("https://valorant-backend-g2wn.onrender.com/valorant-rank"); // Adjust URL if deployed
+                if (!response.ok) throw new Error("Failed to fetch rank");
 
-                if (response.ok) {
-                    // Display the fetched stats
-                    const statsContainer = document.getElementById("statsContainer");
-                    statsContainer.innerHTML = `
-                        <div class="stat-item"><strong>Current Rank:</strong> ${data.current_rank}</div>
-                        <div class="stat-item"><strong>Peak Rank:</strong> ${data.peak_rank}</div>
-                        <div class="stat-item"><strong>K/D Ratio:</strong> ${data.kd_ratio}</div>
-                        <div class="stat-item"><strong>Win Rate:</strong> ${data.win_rate}</div>
-                        <div class="stat-item"><strong>Matches Played:</strong> ${data.matches_played}</div>
-                    `;
-                } else {
-                    // If the response is not OK, display an error
-                    alert("Error fetching stats: " + data.error);
-                }
+                const data = await response.json();
+                displayRank(data);
             } catch (error) {
                 console.error("Error:", error);
-                alert("An error occurred while fetching stats.");
+                document.getElementById("valorant-rank").innerText = "Error fetching rank";
             }
-        };
+        }
+
+        function displayRank(data) {
+            const rankInfo = data.data?.segments?.find(segment => segment.type === "overview");
+
+            if (rankInfo?.stats?.rank) {
+                document.getElementById("valorant-rank").innerHTML = `
+            <p>Rank: ${rankInfo.stats.rank.metadata.tierName}</p>
+            <img src="${rankInfo.stats.rank.metadata.iconUrl}" alt="Rank Icon" width="50">
+        `;
+            } else {
+                document.getElementById("valorant-rank").innerText = "Rank data not available";
+            }
+        }
+
+        fetchValorantRank();
     </script>
 </body>
 </html>
