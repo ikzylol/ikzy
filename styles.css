@@ -81,6 +81,13 @@ ul li {
     padding: 10px;
     border-radius: 5px;
 }
+.stats-container {
+    margin-top: 20px;
+}
+
+.stat-item {
+    margin-bottom: 10px;
+}
 
 /* Socials Section in Menu */
 .socials {
