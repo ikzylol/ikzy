@@ -167,7 +167,7 @@
         window.onload = async () => {
             try {
                 // Make a GET request to your backend API to fetch your stats
-                const response = await fetch(`http://localhost:3000/api/valorant-stats`);
+                const response = await fetch(`https://valorant-backend-g2wn.onrender.com/api/valorant-stats`);
                 const data = await response.json();
 
                 if (response.ok) {
