@@ -68,8 +68,15 @@
             <img src="images/valorant.png" alt="Game Logo" class="game-logo">
             <div>
                 <h3>Valorant</h3>
-                <p id="valorant-rank">Loading Rank...</p>
-                <p id="valorant-peak-rank">Loading Peak Rank...</p>
+                <p id="valorant-rank">
+                    <img id="valorant-rank-icon" class="rank-icon" src="" alt="Rank Icon">
+                    Loading Rank...
+                </p>
+                <p id="valorant-peak-rank">
+                    <img id="valorant-peak-rank-icon" class="rank-icon" src="" alt="Peak Rank Icon">
+                    Loading Peak Rank...
+                </p>
+                <p id="valorant-peak-act">Loading Act...</p>
             </div>
         </div>
         <div class="rank">
@@ -172,12 +179,28 @@
                 const data = await response.json();
 
                 // Extract Rank Information
-                const rank = data.data.segments[0].stats.rank.metadata.tierName;
-                const peakRank = data.data.segments[0].stats.peakRank.metadata.tierName;
+                const rankData = data.data.segments[0].stats;
+                const metadata = data.data.segments[0].metadata;
 
-                // Insert into HTML
-                document.getElementById("valorant-rank").textContent = `Current Rank: ${rank}`;
-                document.getElementById("valorant-peak-rank").textContent = `Peak Rank: ${peakRank}`;
+                const rank = rankData.rank.metadata.tierName;
+                const rankIcon = rankData.rank.metadata.iconUrl;
+
+                const peakRank = rankData.peakRank.metadata.tierName;
+                const peakRankIcon = rankData.peakRank.metadata.iconUrl;
+                const peakAct = rankdata.peakRank.metadata.actName; // Act Name for Peak Rank
+
+                // Update HTML
+                document.getElementById("valorant-rank").innerHTML = `
+                <img id="valorant-rank-icon" class="rank-icon" src="${rankIcon}" alt="Rank Icon">
+                ${rank}
+            `;
+
+                document.getElementById("valorant-peak-rank").innerHTML = `
+                <img id="valorant-peak-rank-icon" class="rank-icon" src="${peakRankIcon}" alt="Peak Rank Icon">
+                ${peakRank}
+            `;
+
+                document.getElementById("valorant-peak-act").textContent = `Act: ${peakAct}`;
             }
             catch (error) {
                 console.error("Error fetching Valorant rank:", error);
