@@ -68,8 +68,8 @@
             <img src="images/valorant.png" alt="Game Logo" class="game-logo">
             <div>
                 <h3>Valorant</h3>
-                <div id="valorant-rank">Loading Rank...</div>
-                <div id="valorant-peak-rank">Loading Peak Rank...</div>
+                <p id="valorant-rank">Loading Rank...</p>
+                <p id="valorant-peak-rank">Loading Peak Rank...</p>
             </div>
         </div>
         <div class="rank">
@@ -168,23 +168,29 @@
         async function fetchRanks() {
             try {
                 const response = await fetch("files/StatsVal.json");
+
+                // Log the response to ensure it's being fetched correctly
                 const data = await response.json();
+                console.log(data); // This will print the data to the browser's console for debugging
 
                 // Ensure that segments and stats exist
                 const stats = data.segments && data.segments[0] && data.segments[0].stats;
-
                 if (stats) {
                     // Current Rank
                     const currentRank = stats.rank.metadata.tierName;
                     const currentIconUrl = stats.rank.metadata.iconUrl;
+                    console.log(`Current Rank: ${currentRank}`); // Debugging output
+
                     document.getElementById("valorant-rank").innerHTML = `
                 Current Rank: ${currentRank} 
                 <img src="${currentIconUrl}" alt="Rank Icon" class="rank-icon">
             `;
 
-                    // Peak Rank and Act Name
+                    // Peak Rank
                     const peakRank = stats.peakRank.metadata.tierName;
                     const peakIconUrl = stats.peakRank.metadata.iconUrl;
+                    console.log(`Peak Rank: ${peakRank}`); // Debugging output
+
                     document.getElementById("valorant-peak-rank").innerHTML = `
                 Peak Rank: ${peakRank} 
                 <img src="${peakIconUrl}" alt="Peak Rank Icon" class="rank-icon">
@@ -196,6 +202,7 @@
                 console.error("Error fetching ranks:", error);
             }
         }
+
 
     </script>
 </body>
