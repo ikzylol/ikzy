@@ -171,7 +171,11 @@
         async function main() {
             const currentrank = await getData();
 
-            console.log(currentrank);
+            const currentranks = document.querySelector("#valorant-rank");
+
+            for (const rank of currentrank) {
+                currentranks.innerHTML += `Current Rank: ${data.segments[0].stats.rank.metadata.tiername}`
+            }
         }
 
         async function getData() {
