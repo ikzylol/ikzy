@@ -5,6 +5,10 @@ body {
     background-color: #e5e3f9;
     color: #AB81D6;
 }
+#valorant-peak-act {
+    font-size: 12px;
+    margin: 0px 10px 0px;
+}
 
 header {
     text-align: center;
@@ -86,10 +90,6 @@ ul li {
     height: 30px;
     margin-right: 10px;
     vertical-align: middle;
-}
-#valorant-peak-act {
-    font-size: 12px;
-    margin: 0px 10px 0px;
 }
 
 /* Socials Section in Menu */
