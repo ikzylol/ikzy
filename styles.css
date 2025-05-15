@@ -1,13 +1,12 @@
 p {
     line-height:25px;
 }
-
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
     background-color: #e5e3f9;
-    color: #AB81D6;
+    color: #9556d6;
 }
 #valorant-peak-act {
     font-size: 12px;
@@ -18,7 +17,7 @@ header {
     text-align: center;
     padding: 20px;
     background-color: #cbc9ff;
-    color: #AB81D6;
+    color: #9556d6;
 }
 
 .profile-pic {
@@ -45,7 +44,7 @@ nav ul li {
 }
 
 nav ul li a {
-    color: #AB81D6;
+    color: #9556d6;
     text-decoration: none;
     font-weight: bold;
 }
@@ -71,7 +70,7 @@ section {
 }
 
 h2 {
-    border-bottom: 2px solid #AB81D6;
+    border-bottom: 2px solid #9556d6;
     padding-bottom: 5px;
 }
 
@@ -110,7 +109,7 @@ ul li {
 
     .socials a {
         display: inline-flex; /* Change from block to inline-flex for horizontal layout */
-        color: #AB81D6;
+        color: #9556d6;
         text-decoration: none;
         font-weight: bold;
         padding: 10px;
@@ -136,7 +135,7 @@ ul li {
     font-size: 30px;
     background: none;
     border: none;
-    color: #AB81D6;
+    color: #9556d6;
     cursor: pointer;
     position: absolute;
     top: 20px;
@@ -188,14 +187,14 @@ ul li {
 
         .socials h3 {
             margin-bottom: 5px;
-            color: #AB81D6;
+            color: #9556d6;
         }
 
         .socials a {
             display: inline-flex; /* Change from block to inline-flex for horizontal layout */
             justify-content: center;
             align-items: center;
-            color: #AB81D6;
+            color: #9556d6;
             text-decoration: none;
             font-weight: bold;
             padding: 5px;
